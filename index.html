@@ -2,156 +2,116 @@
 <html lang="te">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Badrinath Chat Centre - Swag tho tinandi!</title>
+    <title>Badrinath Cinema Chat Centre</title>
     <style>
-        :root {
-            --primary: #ff4500; /* Spicy Orange */
-            --secondary: #ffd700; /* Crispy Yellow */
-            --dark: #2d3436;
+        body { font-family: 'Arial', sans-serif; background: #fdf2e9; text-align: center; color: #5d4037; }
+        header { background: #d35400; color: white; padding: 20px; border-bottom: 5px solid #f1c40f; }
+        .menu-section { display: flex; justify-content: center; flex-wrap: wrap; padding: 20px; }
+        .item-box { 
+            background: white; border-radius: 20px; margin: 15px; padding: 20px; width: 300px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s;
+            border: 3px dashed #e67e22;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #fffaf0;
-            color: var(--dark);
-            text-align: center;
+        .item-box:hover { transform: scale(1.1); background: #fffde7; }
+        .item-box img { width: 100%; border-radius: 15px; height: 180px; object-fit: cover; }
+        .dialogue-box { 
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            z-index: 1000; border: 5px solid #d35400; width: 80%; max-width: 500px;
         }
-
-        header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601050638911-c326006fa413?auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            color: white;
-            padding: 60px 20px;
-            border-bottom: 5px solid var(--secondary);
-        }
-
-        .funny-tagline {
-            font-style: italic;
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        .menu-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 40px;
-            gap: 20px;
-        }
-
-        .food-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            width: 250px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .food-card:hover {
-            transform: scale(1.05) rotate(2deg);
-            border-color: var(--primary);
-        }
-
-        .food-img {
-            height: 150px;
-            background: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .food-info {
-            padding: 15px;
-        }
-
-        .price {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .order-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .funny-footer {
-            background: var(--dark);
-            color: white;
-            padding: 30px;
-            margin-top: 50px;
-        }
-
-        /* Animation for Panipuri */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .bounce { animation: bounce 2s infinite; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        .btn-close { margin-top: 20px; padding: 10px 20px; background: #d35400; color: white; border: none; border-radius: 10px; cursor: pointer; }
+        h3 { color: #e67e22; }
+        .variety-list { text-align: left; padding: 10px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🔥 BADRINATH CHAT CENTRE 🔥</h1>
-        <p class="funny-tagline">"Memu iche chat tinte... Meere maaku brand ambassador!"</p>
-        <p><i>Warning: Ma Panipuri tinte double kick ekkutundi!</i></p>
-    </header>
+<header>
+    <h1>🎬 BADRINATH CHAT CENTRE 🎬</h1>
+    <p><i>"Idhi Chat kaadhu... Oka Emotion!"</i></p>
+</header>
 
-    <div class="menu-container">
-        <div class="food-card">
-            <div class="food-img">🥣</div>
-            <div class="food-info">
-                <h3>The Explosive Panipuri</h3>
-                <p>Noru kaluddam fix, taste aduruddi mix!</p>
-                <div class="price">₹30</div>
-                <button class="order-btn" onclick="order('Panipuri')">Naku Kavali!</button>
-            </div>
-        </div>
-
-        <div class="food-card">
-            <div class="food-img">🍛</div>
-            <div class="food-info">
-                <h3>Captain Cutlet</h3>
-                <p>Okka mukka thinte, inkoka plate adagalsindhe!</p>
-                <div class="price">₹50</div>
-                <button class="order-btn" onclick="order('Cutlet')">Veguramu!</button>
-            </div>
-        </div>
-
-        <div class="food-card">
-            <div class="food-img">🥟</div>
-            <div class="food-info">
-                <h3>Samosa Smash</h3>
-                <p>Samosa ni nalipi, taste ni penchi istam!</p>
-                <div class="price">₹40</div>
-                <button class="order-btn" onclick="order('Samosa')">Idi Pettandi!</button>
-            </div>
-        </div>
+<div class="menu-section">
+    <div class="item-box" onclick="showMenu('panipuri')">
+        <img src="_1" alt="Pani Puri">
+        <h2>Pani Puri</h2>
+        <p><i>"Arey! Cinema choopistha mawa!"</i></p>
     </div>
 
-    <div class="funny-footer">
-        <h3>Address: Me Heart lo... (Just kidding, Badrinath Street, Hyd)</h3>
-        <p>© 2026 Badrinath Food Court - Tinte ikkade tinali, lekapothe intlo tinali!</p>
+    <div class="item-box" onclick="showMenu('cutlet')">
+        <img src="_0" alt="Cutlet">
+        <h2>Ragada Cutlet</h2>
+        <p><i>"Nee yavva... Thaggede le!"</i></p>
     </div>
 
-    <script>
-        function order(item) {
-            alert("Arey! " + item + " ready chestunnam... Direct ga shop ki vachey, lekapothe kalla mundu nundi vellipotundi!");
+    <div class="item-box" onclick="showMenu('samosa')">
+        <img src="_3" alt="Samosa">
+        <h2>Samosa Chat</h2>
+        <p><i>"Okka sari mix chesthe... Next level!"</i></p>
+    </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="dialogue-box" id="menuPopup">
+    <h2 id="popupTitle"></h2>
+    <p id="movieDialogue" style="font-weight: bold; color: #c0392b; font-size: 1.2rem;"></p>
+    <div class="variety-list" id="varietyContent"></div>
+    <button class="btn-close" onclick="closeMenu()">Ika Chalu... Order Chey!</button>
+</div>
+
+<script>
+    const menus = {
+        panipuri: {
+            title: "Pani Puri Varieties",
+            dialogue: "🔥 'Evadu kodithe dhimma thirigi mind block avthundo... vaade Badrinath Pani Puri!'",
+            items: [
+                "1. Regular Mass Puri - ₹30",
+                "2. Ice Cream Pani Puri (Gunde dhairyam unnavallake) - ₹60",
+                "3. Chocolate Pani Puri - ₹50",
+                "4. Garlic Blast Puri - ₹40"
+            ]
+        },
+        cutlet: {
+            title: "Cutlet Varieties",
+            dialogue: "🦁 'Simham thalani korikithe... ee Ragada Cutlet tinna tharvatha vachinantha kick radhu!'",
+            items: [
+                "1. Double Blast Cutlet - ₹50",
+                "2. Cheese Overload Cutlet - ₹80",
+                "3. Paneer Ragada - ₹70"
+            ]
+        },
+        samosa: {
+            title: "Samosa Chat Varieties",
+            dialogue: "🕺 'Dhookudu... Samosa ni nalapali, Chat cheyali, Dhookudu!'",
+            items: [
+                "1. Classic Samosa Smash - ₹40",
+                "2. Corn Samosa Mix - ₹55",
+                "3. Hot Mirchi Samosa Chat - ₹45"
+            ]
         }
-    </script>
+    };
+
+    function showMenu(type) {
+        const data = menus[type];
+        document.getElementById('popupTitle').innerText = data.title;
+        document.getElementById('movieDialogue').innerText = data.dialogue;
+        
+        let html = "<ul>";
+        data.items.forEach(item => { html += `<li>${item}</li>`; });
+        html += "</ul>";
+        
+        document.getElementById('varietyContent').innerHTML = html;
+        document.getElementById('menuPopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeMenu() {
+        document.getElementById('menuPopup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
