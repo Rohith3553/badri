@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badrinath Chat Centre - Swag tho tinandi!</title>
+    <style>
+        :root {
+            --primary: #ff4500; /* Spicy Orange */
+            --secondary: #ffd700; /* Crispy Yellow */
+            --dark: #2d3436;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #fffaf0;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601050638911-c326006fa413?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            color: white;
+            padding: 60px 20px;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .funny-tagline {
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px;
+            gap: 20px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 250px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .food-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: var(--primary);
+        }
+
+        .food-img {
+            height: 150px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .food-info {
+            padding: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .order-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .funny-footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        /* Animation for Panipuri */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .bounce { animation: bounce 2s infinite; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🔥 BADRINATH CHAT CENTRE 🔥</h1>
+        <p class="funny-tagline">"Memu iche chat tinte... Meere maaku brand ambassador!"</p>
+        <p><i>Warning: Ma Panipuri tinte double kick ekkutundi!</i></p>
+    </header>
+
+    <div class="menu-container">
+        <div class="food-card">
+            <div class="food-img">🥣</div>
+            <div class="food-info">
+                <h3>The Explosive Panipuri</h3>
+                <p>Noru kaluddam fix, taste aduruddi mix!</p>
+                <div class="price">₹30</div>
+                <button class="order-btn" onclick="order('Panipuri')">Naku Kavali!</button>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <div class="food-img">🍛</div>
+            <div class="food-info">
+                <h3>Captain Cutlet</h3>
+                <p>Okka mukka thinte, inkoka plate adagalsindhe!</p>
+                <div class="price">₹50</div>
+                <button class="order-btn" onclick="order('Cutlet')">Veguramu!</button>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <div class="food-img">🥟</div>
+            <div class="food-info">
+                <h3>Samosa Smash</h3>
+                <p>Samosa ni nalipi, taste ni penchi istam!</p>
+                <div class="price">₹40</div>
+                <button class="order-btn" onclick="order('Samosa')">Idi Pettandi!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="funny-footer">
+        <h3>Address: Me Heart lo... (Just kidding, Badrinath Street, Hyd)</h3>
+        <p>© 2026 Badrinath Food Court - Tinte ikkade tinali, lekapothe intlo tinali!</p>
+    </div>
+
+    <script>
+        function order(item) {
+            alert("Arey! " + item + " ready chestunnam... Direct ga shop ki vachey, lekapothe kalla mundu nundi vellipotundi!");
+        }
+    </script>
+
+</body>
+</html>
